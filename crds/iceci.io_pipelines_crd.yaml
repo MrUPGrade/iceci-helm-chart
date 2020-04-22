@@ -218,7 +218,7 @@ spec:
                 steps:
                   items:
                     properties:
-                      dockerBuild:
+                      containerBuild:
                         properties:
                           contextPath:
                             description: Path relative to workspace directory

@@ -40,11 +40,19 @@ spec:
           type: object
         spec:
           properties:
+            annotations:
+              additionalProperties:
+                type: string
+              type: object
             imageBuilder:
               enum:
               - kaniko
               - buildkit
               type: string
+            labels:
+              additionalProperties:
+                type: string
+              type: object
             nodeSelector:
               additionalProperties:
                 type: string
