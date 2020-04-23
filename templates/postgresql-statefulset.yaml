@@ -58,10 +58,8 @@ spec:
       spec:
         accessModes:
           - ReadWriteOnce
-        {{- if .Values.postgresql.persistence.storageClass }}
         {{- if not (eq "-" .Values.postgresql.persistence.storageClass) }}
         storageClassName: {{ .Values.postgresql.persistence.storageClass | quote }}
-        {{- end }}
         {{- end }}
         resources:
           requests:

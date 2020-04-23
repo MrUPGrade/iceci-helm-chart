@@ -141,8 +141,9 @@ postgresql:
   persistence:
     annotations: {}
     # if set to "-"  the storage class name will be zero out
-    storageClass:
+    storageClass: "-"
+    hostPath:
     size: 1Gi
     existingClaim:
-    hostPath:
+
 
