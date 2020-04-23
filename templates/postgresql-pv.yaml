@@ -9,7 +9,7 @@ metadata:
   name: {{ template "iceci.fullname" . }}-postgresql
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   capacity:
     storage: {{ .Values.storage.dynamicVolume.size }}
   hostPath:
