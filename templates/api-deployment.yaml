@@ -29,7 +29,7 @@ spec:
           imagePullPolicy: {{ .Values.api.image.pullPolicy }}
           env:
             {{ include "iceci.databaseEnvs" . | nindent 12 }}
-            - name: ICE_NAMESPACE
+            - name: ICECI_NAMESPACE
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace

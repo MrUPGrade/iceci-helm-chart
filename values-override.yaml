@@ -1,4 +1,7 @@
 ui:
+#  enabled: false
+  image:
+    pullPolicy: Always
   ingress:
     enabled: true
     hosts:
@@ -7,6 +10,9 @@ ui:
           - /*
 
 api:
+#  enabled: false
+  image:
+    pullPolicy: Always
   ingress:
     enabled: true
     hosts:
@@ -15,8 +21,16 @@ api:
           - /api/*
 
 iceciOperator:
+#  enabled: false
+  image:
+    pullPolicy: Always
   persistence:
     sharedVolume:
       hostPath: /home/kkrampa/shared-storage
     dynamicVolume:
       hostPath: /home/kkrampa/dynamic-storage
+
+sync:
+#  enabled: false
+  image:
+    pullPolicy: Always

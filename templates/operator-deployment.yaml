@@ -28,7 +28,7 @@ spec:
           image: "{{ .Values.iceciOperator.image.repository }}:{{ .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.iceciOperator.image.pullPolicy }}
           env:
-          - name: ICE_NAMESPACE
+          - name: ICECI_NAMESPACE
             valueFrom:
               fieldRef:
                 fieldPath: metadata.namespace
@@ -38,16 +38,20 @@ spec:
                 fieldPath: metadata.name
           - name: OPERATOR_NAME
             value: "iceci-operator"
-          - name: ICE_DYNAMIC_PVC
+          - name: ICECI_DYNAMIC_PVC
             value: {{ include "iceci.fullname" . }}-dynamic
-          - name: ICE_SHARED_PVC
+          - name: ICECI_SHARED_PVC
             value: {{ include "iceci.fullname" . }}-shared
-          - name: ICE_IMAGE_KANIKO
+          - name: ICECI_IMAGE_KANIKO
             value: "gcr.io/kaniko-project/executor:v0.16.0"
-          - name: ICE_IMAGE_UTILS
-            value: "iceci/utils:2"
-          - name: ICE_IMAGE_BUILDKIT
+          - name: ICECI_IMAGE_UTILS
+            value: "iceci/utils:latest"
+          - name: ICECI_IMAGE_BUILDKIT
             value: "moby/buildkit:v0.6.4-rootless"
+          - name: ICECI_STEP_SERVICE_ACCOUNT
+            value: ice-operator-step
+          - name: ICECI_DEFAULT_IMAGE_BUILDER
+            value: buildkit
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
