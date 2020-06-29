@@ -36,20 +36,20 @@ spec:
   rules:
     - http:
         paths:
-        {{- range .Values.ui.ingress.hosts }}
-          {{- range .paths }}
-          - path: {{ . }}
-            backend:
-              serviceName: {{ include "iceci.fullname" $ }}-ui
-              servicePort: {{ $uiSvcPort }}
-          {{- end }}
-        {{- end }}
         {{- range .Values.api.ingress.hosts }}
           {{- range .paths }}
           - path: {{ . }}
             backend:
               serviceName: {{ include "iceci.fullname" $ }}-api
               servicePort: {{ $apiSvcPort }}
+          {{- end }}
+        {{- end }}
+        {{- range .Values.ui.ingress.hosts }}
+          {{- range .paths }}
+          - path: {{ . }}
+            backend:
+              serviceName: {{ include "iceci.fullname" $ }}-ui
+              servicePort: {{ $uiSvcPort }}
           {{- end }}
         {{- end }}
 {{- end }}
