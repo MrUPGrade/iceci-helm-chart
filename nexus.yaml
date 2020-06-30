@@ -1,0 +1,41 @@
+ui:
+#  enabled: false
+  image:
+    pullPolicy: Always
+  ingress:
+    enabled: true
+    hosts:
+      - host: null
+        paths:
+          - /
+
+api:
+#  enabled: false
+  image:
+    pullPolicy: Always
+  ingress:
+    enabled: true
+    hosts:
+      - host: null
+        paths:
+          - /api/
+
+iceciOperator:
+#  enabled: false
+  image:
+    pullPolicy: Always
+  persistence:
+    sharedVolume:
+      existingClaim: nfs-shared-storage
+      hostPath: null
+    dynamicVolume:
+      existingClaim: nfs-dynamic-storage
+      hostPath: null
+
+sync:
+#  enabled: false
+  image:
+    pullPolicy: Always
+
+nodeSelector:
+  kubernetes.io/hostname: nexus

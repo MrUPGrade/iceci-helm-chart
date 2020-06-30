@@ -290,6 +290,62 @@ spec:
                                 type: string
                         runtimeProfile:
                           type: string
+                        serviceRun:
+                          type: object
+                          required:
+                          - image
+                          - name
+                          properties:
+                            envFromSecret:
+                              type: array
+                              items:
+                                type: object
+                                required:
+                                - objectName
+                                properties:
+                                  envName:
+                                    description: Name of environment variable
+                                    type: string
+                                  objectKey:
+                                    description: Key in config map or secret
+                                    type: string
+                                  objectName:
+                                    description: Name of config map or secret
+                                    type: string
+                            environment:
+                              type: array
+                              items:
+                                type: object
+                                required:
+                                - name
+                                properties:
+                                  fromSecret:
+                                    type: string
+                                  name:
+                                    type: string
+                                  value:
+                                    type: string
+                            files:
+                              type: array
+                              items:
+                                type: object
+                                required:
+                                - fromSecret
+                                - path
+                                properties:
+                                  fromSecret:
+                                    type: string
+                                  path:
+                                    type: string
+                            image:
+                              type: string
+                            imagePullSecret:
+                              type: string
+                            name:
+                              type: string
+                              pattern: ^[a-z]+[a-z\-_0-9]+$
+                            script:
+                              type: string
                         simpleStep:
                           type: object
                           required:
